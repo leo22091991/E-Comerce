@@ -7,8 +7,9 @@ body {
 }
 
 header {
-  display: flex;
+  display: block;
   background-color: #FF4500;
+  align-items: center;
   height: 100px;
   color: #fff;
   font-size: 150%;
@@ -117,7 +118,7 @@ footer {
   .products-carousel .active{
     position: relative;
     visibility: hidden;
-    width: :100%;
+    width: 100%;
     height: 0%;
     margin: 0;
     background-color: tomato;

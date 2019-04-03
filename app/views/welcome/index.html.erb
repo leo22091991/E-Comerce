@@ -1,0 +1,80 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Ecomerce</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<main>
+    <div class="products-carousel">
+      <div class="js-anterior"> < </div>
+
+      <div class="product">Producto 1</div>
+      <div class="product active">Producto 2</div>
+      <div class="product">Producto 3</div>
+      <div class="product">Producto 4</div>
+      <div class="product">Producto 5</div>
+      <div class="product">Producto 6</div>
+
+      <div class="js-siguiente"> > </div>
+    </div>
+
+
+    <div class="products-body">  
+      <div class="product-b">Producto 1</div>
+      <div class="product-b">Producto 2</div>
+      <div class="product-b">Producto 3</div>
+      <div class="product-b">Producto 4</div>
+      <div class="product-b">Producto 5</div>
+      <div class="product-b">Producto 1</div>
+      <div class="product-b">Producto 2</div>
+      <div class="product-b">Producto 3</div>
+      <div class="product-b">Producto 1</div>
+      <div class="product-b">Producto 2</div>
+      <div class="product-b">Producto 3</div>
+      <div class="product-b">Producto 4</div>
+      <div class="product-b">Producto 5</div>
+      <div class="product-b">Producto 1</div>
+      <div class="product-b">Producto 2</div>
+      <div class="product-b">Producto 3</div>
+    </div>
+  </main>
+
+  <footer>
+  </footer>
+
+  <script>
+    $('.js-siguiente').on('click', function() {
+      var productos = $('.product')
+      var len = productos.length
+      var siTiene = 0
+      productos.each( function(index){
+        console.log(index) 
+        if ($(this).hasClass('active')) {
+          siTiene = index
+          $(this).removeClass('active')
+        }
+      })
+      $(productos[(siTiene+1)%len]).addClass('active')
+    })
+  </script>
+
+  <script>
+    $('.js-anterior').on('click', function() {
+      var productos = $('.product')
+      var len = productos.length
+      var siTiene = 0
+      productos.each( function(index){
+        console.log(index) 
+        if ($(this).hasClass('active')) {
+          siTiene = index
+          $(this).removeClass('active')
+        }
+      })
+      $(productos[Math.abs(siTiene-1)%len]).addClass('active')
+    })
+  </script>
+
+</body>
