@@ -1,0 +1,17 @@
+[33mcommit ebfd9263fbd1168a5dfc041d11a527d6b0525d2e[m[33m ([m[1;36mHEAD -> [m[1;32mview_index[m[33m)[m
+Author: Leonardo Drago <leo.ipt.13@gmail.com>
+Date:   Mon Apr 1 20:45:27 2019 -0300
+
+    index: html y css
+
+[33mcommit 69ce4f77097fe198c9b19528d58563149f31e4de[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m
+Author: Leonardo Drago <leo.ipt.13@gmail.com>
+Date:   Mon Mar 18 17:16:54 2019 -0300
+
+    inicializando proyecto en rails
+
+[33mcommit a61f401b188d2b1e6dc9acf2a8d9df4cb239b42e[m
+Author: Leonardo Drago <leo.ipt.13@gmail.com>
+Date:   Mon Mar 18 17:12:19 2019 -0300
+
+    Agregando al Readme y Gemfile

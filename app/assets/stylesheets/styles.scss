@@ -1,0 +1,162 @@
+body {
+  height: 100vh;
+  width: 100%;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: block;
+  background-color: #FF4500;
+  align-items: center;
+  height: 100px;
+  color: #fff;
+  font-size: 150%;
+}
+
+header .menu {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header .menu .link {
+  display: none;
+}
+
+header .menu:hover .link, header .menu .link.active {
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  background-color: white;
+}
+
+header .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+main {
+  background-color: yellow;
+  height: 100%;
+  width: 100%;
+  
+}
+
+footer {
+  display: flex;
+  align-self: flex-end;
+  background-color: green;
+  height: 50px;
+  width: 100%;
+}
+
+
+.products-carousel {
+  background-color: #fff;
+  width: 100%;
+  height: 200px;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.products-carousel .product{
+  display: flex;
+  background-color: #fff;
+  font-size: 40%;
+  height: 180px;
+  width: 50%;
+  align-items: center;
+  visibility:hidden
+}
+
+.products-carousel .active{
+  display: flex;
+  background-color: #4169E1;
+  align-self: center;
+  justify-content: center;
+  width: 80%;
+  margin-right: 5%;
+  margin-left: 5%;
+  position:absolute;
+  visibility:visible
+}
+
+.products-body{
+  display: flex;
+  background-color: #fff;
+  height: auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.products-body .product-b{
+  display: flex;
+  height: 150px;
+  width: 200px;
+  margin: 1%;
+  align-items: center;
+  justify-content: center;
+  background-color: #87CEFA;
+  align-items: auto;
+}
+
+
+@media (max-width: 700px) {
+  .products-carousel {
+    visibility: hidden;
+    height: 0%;
+    margin: 0%;
+  }
+
+  .products-carousel .active{
+    position: relative;
+    visibility: hidden;
+    width: 100%;
+    height: 0%;
+    margin: 0;
+    background-color: tomato;
+  }
+
+  footer {
+  height: 0%;
+  width: 0%;
+  }
+
+  .products-body{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    width: 100%;
+  }
+
+  .products-body .product-b{
+    height: 200px;
+    width: 96%;
+    margin: 2%; 
+  }
+
+  @media (max-width: 400px){
+    .products-body{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    width: 100%;
+  }
+
+  .products-body .product-b{
+    height: 100px;
+    width: 96%;
+    margin: 2%; 
+  }
+  }
+
+}
