@@ -1,33 +1,59 @@
-<p id="notice"><%= notice %></p>
+<main>
+    <div class="products-carousel">
+      <div class="js-anterior"> < </div>
+      <% @products.each do |prod| %>
+        <div class="product"> <%= prod.name%> </div>
+      <% end %>
 
-<h1>Products</h1>
+      <div class="js-siguiente"> > </div>
+    </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    
+    <div class="products-body">
+      <% render partial: "product", collection: @products %>
+      <% @products.each do |product|%>
+        <div class="product-b">
+          <p> nombre: <%= product.name %></p>
+          <p><%= product.category.name %></p>
+        </div>
+      <% end %>
+    </div>
 
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.category %></td>
-        <td><%= product.name %></td>
-        <td><%= product.price %></td>
-        <td><%= product.description %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  </main>
 
-<br>
+  <footer>
+  </footer>
 
-<%= link_to 'New Product', new_product_path %>
+  <script>
+    $('.js-siguiente').on('click', function() {
+      var productos = $('.product')
+      var len = productos.length
+      var siTiene = 0
+      productos.each( function(index){
+        console.log(index) 
+        if ($(this).hasClass('active')) {
+          siTiene = index
+          $(this).removeClass('active')
+        }
+      })
+      $(productos[(siTiene+1)%len]).addClass('active')
+    })
+  </script>
+
+  <script>
+    $('.js-anterior').on('click', function() {
+      var productos = $('.product')
+      var len = productos.length
+      var siTiene = 0
+      productos.each( function(index){
+        console.log(index) 
+        if ($(this).hasClass('active')) {
+          siTiene = index
+          $(this).removeClass('active')
+        }
+      })
+      $(productos[Math.abs(siTiene-1)%len]).addClass('active')
+    })
+  </script>
+
+</body>

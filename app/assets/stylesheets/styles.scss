@@ -10,6 +10,7 @@ header {
   display: block;
   background-color: #FF4500;
   align-items: center;
+  justify-content: center;
   height: 100px;
   color: #fff;
   font-size: 150%;
@@ -36,7 +37,7 @@ header .menu:hover .link, header .menu .link.active {
 header .logo {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-self: center;
   width: 100%;
 }
 
@@ -73,7 +74,7 @@ footer {
   height: 180px;
   width: 50%;
   align-items: center;
-  visibility:hidden
+  visibility:hidden;
 }
 
 .products-carousel .active{
@@ -85,7 +86,7 @@ footer {
   margin-right: 5%;
   margin-left: 5%;
   position:absolute;
-  visibility:visible
+  visibility:visible;
 }
 
 .products-body{
@@ -98,6 +99,7 @@ footer {
 
 .products-body .product-b{
   display: flex;
+  flex-direction:column;
   height: 150px;
   width: 200px;
   margin: 1%;
@@ -145,18 +147,17 @@ footer {
 
   @media (max-width: 400px){
     .products-body{
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-flow: column;
-    width: 100%;
-  }
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-flow: column;
+      width: 100%;
+    }
 
-  .products-body .product-b{
-    height: 100px;
-    width: 96%;
-    margin: 2%; 
+    .products-body .product-b{
+      height: 100px;
+      width: 96%;
+      margin: 2%; 
+    }
   }
-  }
-
 }
