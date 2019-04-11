@@ -1,8 +1,10 @@
-<div><%= product.category %></div>
-<div><%= product.name %></div>
-<div><%= product.price %></div>
-<div><%= product.description %></div>
-    
-<div><%= link_to 'Show', product %></div>
-<div><%= link_to 'Edit', edit_product_path(product) %></div>
-<div><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+<% @products.each do |product|%>
+	<div><%= product.category %></div>
+	<div><%= product.name %></div>
+	<div><%= product.price %></div>
+	<div><%= product.description %></div>
+	    
+	<div><%= link_to 'Show', product %></div>
+	<div><%= link_to 'Edit', edit_product_path(product) %></div>
+	<div><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+<% end %>

@@ -23,9 +23,11 @@
 
 
     <div class="products-body">  
-      <div class="product-b">
-        <%= render partial: "products/products", collection: @products %>
-      </div>
+      <% @products.each do |product| %>
+        <div class="product-b">
+          <%= product.name%>
+        </div>
+      <% end %>
     </div>
   </main>
 

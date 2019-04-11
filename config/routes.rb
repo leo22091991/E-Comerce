@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'welcome/index'
-  root 'products#index'
+  root 'welcome#cart'
 
   resources :sales
   resources :categories

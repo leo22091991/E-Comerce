@@ -1,16 +1,17 @@
 <main>
     <div class="products-carousel">
       <div class="js-anterior"> < </div>
-      <% @products.each do |prod| %>
-        <div class="product"> <%= prod.name%> </div>
-      <% end %>
-
+        <% @products.each do |prod| %>
+          <div class="product">
+            <p> <%= prod.name%> </p>
+            <p> <%= prod.category.name%> </p>
+          </div>
+        <% end %>
       <div class="js-siguiente"> > </div>
     </div>
 
     
     <div class="products-body">
-      <% render partial: "product", collection: @products %>
       <% @products.each do |product|%>
         <div class="product-b">
           <p> nombre: <%= product.name %></p>
@@ -20,9 +21,6 @@
     </div>
 
   </main>
-
-  <footer>
-  </footer>
 
   <script>
     $('.js-siguiente').on('click', function() {
@@ -52,7 +50,7 @@
           $(this).removeClass('active')
         }
       })
-      $(productos[Math.abs(siTiene-1)%len]).addClass('active')
+      $(productos[(siTiene+1)%len]).addClass('active')
     })
   </script>
 

@@ -1,17 +1,17 @@
 body {
-  height: 100vh;
+  display:flex;
+  height: 100%;
   width: 100%;
   margin: 0px;
-  display: flex;
-  flex-direction: column;
+  flex-direction:column;
 }
 
 header {
-  display: block;
+  display: flex;
   background-color: #FF4500;
   align-items: center;
   justify-content: center;
-  height: 100px;
+  height: 50px;
   color: #fff;
   font-size: 150%;
 }
@@ -54,6 +54,9 @@ footer {
   background-color: green;
   height: 50px;
   width: 100%;
+  align-items:center;
+  justify-content:center;
+  font-size:50px;
 }
 
 
@@ -69,6 +72,7 @@ footer {
 
 .products-carousel .product{
   display: flex;
+  flex-direction: column;
   background-color: #fff;
   font-size: 40%;
   height: 180px;
@@ -106,14 +110,108 @@ footer {
   align-items: center;
   justify-content: center;
   background-color: #87CEFA;
-  align-items: auto;
+  align-items:auto;
 }
+
+//CARRITO welcome/cart////////////////////////////////////////////////////////////////////////////////////////
+
+.cart-main{
+  display:flex;
+  height:100%;
+  width:100%;
+  background-color: #fff;
+  flex-direction:row;
+}
+
+.cart-index{
+  height:100%;
+  width:50%;
+  background-color: red;
+}
+
+.cart-cart{
+  height:100;
+  width:50%;
+  background-color:blue;
+}
+
+.cart-index-product{
+  display:flex;
+  height:150px;
+  width: 90%;
+  margin:5%;
+  background-color: #fff;
+  flex-direction: column;
+}
+
+.title-product{
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  width:100%;
+  height:20%;
+  background-color: #FFFF00;
+}
+
+
+.body-prod{
+  display:flex;
+  flex-direction:row;
+  width:100%;
+  height:60%;
+  background-color:orange;
+}
+
+.body-prod-image{
+  display:flex;
+  height:100%;
+  width:30%;
+  background-color: tomato;
+}
+
+.body-prod-desc{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100%;
+  width:70%;
+  background-color: blue;
+}
+
+.price-and-button{
+  display:flex;
+  height:20%;
+  width:100%;
+  background-color:green;
+}
+
+.price{
+  display:flex;
+  height:100%;
+  width:70%;
+  align-items:center;
+  justify-content:center;
+  background-color: #fff;
+}
+
+.button{
+  display:flex;
+  height:100%;
+  width:30%;
+  align-items:center;
+  justify-content:center;
+  background-color:#2EFEF7;
+}
+
+
+
+
 
 
 @media (max-width: 700px) {
   .products-carousel {
     visibility: hidden;
-    height: 0%;
+    height: 0;
     margin: 0%;
   }
 
@@ -127,8 +225,8 @@ footer {
   }
 
   footer {
-  height: 0%;
-  width: 0%;
+    height: 0%;
+    width: 0%;
   }
 
   .products-body{
@@ -136,7 +234,9 @@ footer {
     align-items: center;
     justify-content: center;
     flex-flow: column;
+    //align-self:center;
     width: 100%;
+    //height:100%;  
   }
 
   .products-body .product-b{
@@ -152,6 +252,8 @@ footer {
       justify-content: center;
       flex-flow: column;
       width: 100%;
+      height:100%;
+      align-self:center;
     }
 
     .products-body .product-b{
