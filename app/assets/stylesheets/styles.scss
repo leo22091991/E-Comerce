@@ -1,9 +1,11 @@
-body {
+body{
   display:flex;
+  position:relative;  
   height: 100%;
   width: 100%;
   margin: 0px;
   flex-direction:column;
+  background-color:#fff;
 }
 
 header {
@@ -111,6 +113,14 @@ footer {
   justify-content: center;
   background-color: #87CEFA;
   align-items:auto;
+}
+
+.show-main{
+  display:flex;
+  height:100;
+  width:100%;
+  background-color: #fff;
+  flex-direction:row;
 }
 
 //CARRITO welcome/cart////////////////////////////////////////////////////////////////////////////////////////
@@ -227,6 +237,7 @@ footer {
   footer {
     height: 0%;
     width: 0%;
+    font-size:0px;
   }
 
   .products-body{
@@ -262,4 +273,80 @@ footer {
       margin: 2%; 
     }
   }
+}
+
+//////////carrito///////////////////////////////////////////////////////////////////////////////////////////////
+.total-carrito{
+  display:flex;
+  flex-direction:row;
+  width:98%;
+  margin:1%;
+  height:25px;
+  background-color:orange;
+}
+
+.total-carrito-title{
+  display:flex;
+  width:70%;
+  height:100%;
+  background-color:red;
+  font-size:24px;
+  align-items:center;
+  justify-content:center;
+}
+
+.total-carrito-price{
+  display:flex;
+  width:30%;
+  height:100%;
+  background-color:pink;
+  font-size:24px;
+  align-items:center;
+  justify-content:center;
+}
+
+
+.cart-cart-product{
+  display: flex;
+  flex-direction:row;
+  width:90%;
+  margin:5%;
+  height:35px;
+  background-color: #fff;
+
+}
+
+.cart-price{
+  display:flex;
+  width:15%;
+  height:100%;
+  font-size:20px;
+  background-color:pink;
+}
+
+.cart-name{
+  display:flex;
+  width:55%;
+  height:100%;
+  background-color:red;
+}
+
+.cart-add, .cart-subtract{
+  display:flex;
+  width:10%;
+  height:100%;
+  background-color:green;
+  align-items:center;
+  justify-content:center;
+  font-size:40px;
+}
+
+.cart-quantity{
+  display:flex;
+  width:10%;
+  height:100%;
+  background-color:pink;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
 }
