@@ -1,12 +1,12 @@
 class Sale < ApplicationRecord
-	has_many :detail_sales, dependent: :destroy
-	has_many :products, through: :datailSales
+	has_many :line_items, :as => :line_itemable, dependent: :destroy
+	has_many :products, through: :line_items
 
 	before_create :set_date_sale
-	accepts_nested_attributes_for :detail_sales
+	accepts_nested_attributes_for :line_items
 	
 	def set_total_cost
-		details = self.detail_sales
+		details = self.line_items
 		total_cost = 0 
 		details.each do |ds|
 			total_cost = total_cost + ds.subtotal
