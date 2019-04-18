@@ -18,7 +18,9 @@
 						$ <%= product.price %>
 					</div>
 					<div class="button">
-						AGREGAR
+						<%= form_with(url: "/cart", method: "patch") do %>
+							<%= submit_tag("agregar producto") %>
+						<% end %>
 					</div>
 				</div>
 			</div>

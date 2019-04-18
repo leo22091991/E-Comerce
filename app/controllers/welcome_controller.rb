@@ -6,4 +6,8 @@ class WelcomeController < ApplicationController
   def cart
   	@products = Product.all
   end
+
+  def update
+  	
+  end
 end
