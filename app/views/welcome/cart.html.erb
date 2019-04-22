@@ -18,7 +18,8 @@
 						$ <%= product.price %>
 					</div>
 					<div class="button">
-						<%= form_with(url: "/cart", method: "patch") do %>
+						<%= form_with(url: "/carts", method: "patch") do %>
+							<%= hidden_field_tag(:product_id, product.id)%>
 							<%= submit_tag("agregar producto") %>
 						<% end %>
 					</div>
@@ -27,6 +28,7 @@
 		<% end %>
 	</div>
 	<div class="cart-cart">
+		<% @cart.line_items.each do |line_item| %>
 		<div class="total-carrito">
 			<div class="total-carrito-title">  Total </div>
 			<div class="total-carrito-price"> $$$ </div>
@@ -36,7 +38,7 @@
 
 			</div>
 			<div class="cart-name">
-
+				<%= line_item.product.name %>
 			</div>
 			<div class="cart-add">
 				+
@@ -48,5 +50,6 @@
 				-
 			</div>
 		</div>
+		<% end %>
 	</div>
 </main>

@@ -33,4 +33,4 @@ end
 #	]
 #)
 #
-#Sale.new(detail_sales_attributes: [{product_id: 6, quantity: 2}])
+#Sale.new(line_items_attributes: [{product_id: 6, quantity: 2}])

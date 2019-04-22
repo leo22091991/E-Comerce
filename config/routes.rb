@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :carts
   get 'welcome/index'
   root 'welcome#cart'
-
+  resources :welcome
   resources :sales
   resources :categories
   resources :products do
