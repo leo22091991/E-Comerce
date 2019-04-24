@@ -318,6 +318,8 @@ footer {
 
 .cart-price{
   display:flex;
+  align-items:center;
+  justify-content:center;
   width:15%;
   height:100%;
   font-size:20px;
@@ -326,8 +328,11 @@ footer {
 
 .cart-name{
   display:flex;
+  justify-content:center;
+  align-items:center;
   width:55%;
   height:100%;
+  font-size: 30px;
   background-color:red;
 }
 

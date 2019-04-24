@@ -40,6 +40,8 @@ class SalesController < ApplicationController
   # PATCH/PUT /sales/1
   # PATCH/PUT /sales/1.json
   def update
+    line_item = current_cart.line_items.create(product_id: params[:product_id], quantity: 1)
+
     respond_to do |format|
       if @sale.update(sale_params)
         format.html { redirect_to @sale, notice: 'Sale was successfully updated.' }
@@ -70,5 +72,9 @@ class SalesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_params
       params.require(:sale).permit(:date_sale, line_items_attributes: [:product_id, :quantity])
+    end
+
+    def current_cart
+      @cart = Cart.first
     end
 end

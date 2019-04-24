@@ -28,14 +28,14 @@
 		<% end %>
 	</div>
 	<div class="cart-cart">
-		<% @cart.line_items.each do |line_item| %>
 		<div class="total-carrito">
 			<div class="total-carrito-title">  Total </div>
-			<div class="total-carrito-price"> $$$ </div>
+			<div class="total-carrito-price"> <%= @cart.set_total%> </div>
 		</div>
+		<% @cart.line_items.each do |line_item| %>
 		<div class="cart-cart-product">
 			<div class="cart-price">
-
+				<%= line_item.product.price%>
 			</div>
 			<div class="cart-name">
 				<%= line_item.product.name %>
@@ -44,7 +44,7 @@
 				+
 			</div>
 			<div class="cart-quantity">
-				1
+				<%= line_item.quantity %>
 			</div>
 			<div class="cart-subtract">
 				-

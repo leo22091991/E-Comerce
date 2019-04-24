@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  resources :carts
-  get 'welcome/index'
   root 'welcome#cart'
-  resources :welcome
+  patch '/carts' => 'carts#update'
+
+  resources :carts
+  resources :line_items
   resources :sales
   resources :categories
   resources :products do

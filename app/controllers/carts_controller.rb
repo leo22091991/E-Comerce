@@ -40,11 +40,11 @@ class CartsController < ApplicationController
   # PATCH/PUT /carts/1
   # PATCH/PUT /carts/1.json
   def update
-    line_item = current_car.line_items.create(product_id: params[:product_id], quantity: 1)
+    line_item = current_cart.line_items.create(product_id: params[:product_id], quantity: 1)
 
     respond_to do |format|
       if line_item.valid?
-        format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Cart was successfully updated.' }
       else
         format.html { render :edit, notice: 'error' }
       end
@@ -64,15 +64,15 @@ class CartsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cart
-      @cart = Cart.find(params[:id])
+      @cart = Cart.find_by_id(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cart_params
-      params.require(:cart).permit(line_items_attributes:[:product_id, :quantity], :total)
+      params.require(:cart).permit(line_items_attributes: [:product_id, :quantity])
     end
 
-    def current_car
+    def current_cart
       @cart = Cart.first
     end
 end
