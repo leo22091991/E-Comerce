@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  resources :welcome
   root 'welcome#cart'
   patch '/carts' => 'carts#update'
+  delete '/carts' => 'carts#delete_item'
 
   resources :carts
   resources :line_items

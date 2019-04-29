@@ -34,6 +34,12 @@
 		</div>
 		<% @cart.line_items.each do |line_item| %>
 		<div class="cart-cart-product">
+			<div class="boton-eliminar">
+				<%= form_with(url: "/carts", method: "delete") do %>
+					<%= hidden_field_tag(:line_item_id, line_item.id)%>
+					<%= submit_tag("X") %>
+				<% end %>
+			</div>
 			<div class="cart-price">
 				<%= line_item.product.price%>
 			</div>
@@ -51,5 +57,8 @@
 			</div>
 		</div>
 		<% end %>
+		<div>
+			COMPRAR
+		</div>
 	</div>
 </main>

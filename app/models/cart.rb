@@ -2,7 +2,7 @@ class Cart < ApplicationRecord
 	has_many :line_items, :as => :line_itemable, dependent: :destroy
 	has_many :products, through: :line_items
 
-	before_create :set_total
+	before_update :set_total
 	accepts_nested_attributes_for :line_items
 
 
@@ -15,3 +15,4 @@ class Cart < ApplicationRecord
 		return total
 	end
 end
+
