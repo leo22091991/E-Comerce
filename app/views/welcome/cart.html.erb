@@ -30,7 +30,7 @@
 	<div class="cart-cart">
 		<div class="total-carrito">
 			<div class="total-carrito-title">  Total </div>
-			<div class="total-carrito-price"> <%= @cart.set_total%> </div>
+			<div class="total-carrito-price"> <%= @cart.set_totals%> </div>
 		</div>
 		<% @cart.line_items.each do |line_item| %>
 		<div class="cart-cart-product">
@@ -47,18 +47,26 @@
 				<%= line_item.product.name %>
 			</div>
 			<div class="cart-add">
-				+
+				<%= form_with(url: "/line_items/update_add_quantity", method: "patch") do %>
+					<%= hidden_field_tag(:line_item_id, line_item.id) %>
+					<%=  submit_tag("+") %>
+				<% end %>
 			</div>
 			<div class="cart-quantity">
 				<%= line_item.quantity %>
 			</div>
 			<div class="cart-subtract">
-				-
+				<%= form_with(url: "/line_items/update_rec_quantity", method: "patch") do %>
+					<%= hidden_field_tag(:line_item_id, line_item.id) %>
+					<%= submit_tag("-") %>
+				<% end %>
 			</div>
 		</div>
 		<% end %>
 		<div>
-			COMPRAR
+			<%= form_with(url: "/sales", method: "post") do %>
+				<%= submit_tag("Comprar") %>
+			<% end %>
 		</div>
 	</div>
 </main>

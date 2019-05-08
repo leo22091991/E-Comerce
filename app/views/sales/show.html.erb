@@ -7,8 +7,17 @@
 
 <p>
   <strong>Total cost:</strong>
-  <%= @sale.total_cost %>
+  Total: <%= @sale.total_cost %>
 </p>
+
+<div>
+	<% @sale.line_items.each do |details| %>
+		<div> id: <%= details.product_id %> </div>
+		<div> Producto: <%= details.product.name %> </div>
+		<div> Cantidad: <%= details.quantity %> </div>
+		<div> subtotal: <%= details.subtotal %> </div>
+	<% end %>
+</div>
 
 <%= link_to 'Edit', edit_sale_path(@sale) %> |
 <%= link_to 'Back', sales_path %>

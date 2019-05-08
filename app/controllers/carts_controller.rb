@@ -40,19 +40,17 @@ class CartsController < ApplicationController
   # PATCH/PUT /carts/1
   # PATCH/PUT /carts/1.json
   def update
-    if current_cart.products.find_by_id(params[:product_id]).blank?
+    line_items = current_cart.update_attributes(
+      line_items_attributes: [{product_id: params[:product_id], quantity: 1}]
+    )
 
-      line_item = current_cart.line_items.create(product_id: params[:product_id], quantity: 1)
-
-      respond_to do |format|
-        if line_item.valid?
-          format.html { redirect_to root_path, notice: 'Producto agregado al carrito' }
-        else
-          format.html { render :edit, notice: 'error' }
-        end
+    respond_to do |format|
+      if line_items
+        format.html { redirect_to root_path, notice: 'Producto agregado al carrito' }
+      else
+        format.html { redirect_to root_path, notice: 'Ese producto ya fue agregado' }
       end
     end
-
   end
 
   def delete_item

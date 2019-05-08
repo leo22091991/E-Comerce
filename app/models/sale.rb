@@ -3,19 +3,11 @@ class Sale < ApplicationRecord
 	has_many :products, through: :line_items
 
 
-	before_create :set_total_cost
+	#before_create :set_total_cost
+	validate :check_sales
 	before_create :set_date_sale
 	accepts_nested_attributes_for :line_items
 
-
-	def set_total_cost
-		details = self.line_items
-		self.total_cost = 0
-		details.each do |det|
-			self.total_cost = self.total_cost + det.subtotal
-		end
-		return total_cost
-	end
 
 	
 	private
@@ -23,6 +15,14 @@ class Sale < ApplicationRecord
 	def set_date_sale
 		self.date_sale = self.created_at
 	end
+
+	def check_sales
+		if total_cost == 0.0
+			errors.add(:sales, 'no agrego ningun producto al carrito')
+		end	
+	end
+
+
 
 
 end
