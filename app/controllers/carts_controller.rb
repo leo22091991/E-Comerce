@@ -46,16 +46,16 @@ class CartsController < ApplicationController
 
     respond_to do |format|
       if line_items
-        format.html { redirect_to root_path, notice: 'Producto agregado al carrito' }
+        format.html { redirect_to '/welcome/cart', notice: 'Producto agregado al carrito' }
       else
-        format.html { redirect_to root_path, notice: 'Ese producto ya fue agregado' }
+        format.html { redirect_to '/welcome/cart', notice: 'Ese producto ya fue agregado' }
       end
     end
   end
 
   def delete_item
     Cart.first.line_items.delete(params[:line_item_id])
-    redirect_to root_path
+    redirect_to '/welcome/cart'
   end
 
   # DELETE /carts/1

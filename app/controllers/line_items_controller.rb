@@ -8,7 +8,7 @@ class LineItemsController < ApplicationController
 		line_item = current_cart.line_items.find_by_id(params[:line_item_id])
 		line_item.update(quantity: line_item.quantity + 1)
 
-		redirect_to root_path
+		redirect_to '/welcome/cart'
 	end
 
 	def update_rec_quantity
@@ -16,7 +16,7 @@ class LineItemsController < ApplicationController
 		line_item2 = current_cart.line_items.find_by_id(params[:line_item_id])
 		line_item2.update(quantity: line_item2.quantity - 1)
 
-		redirect_to root_path
+		redirect_to '/welcome/cart'
 	end
 
 	private

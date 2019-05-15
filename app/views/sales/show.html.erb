@@ -1,23 +1,32 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Date sale:</strong>
+  <strong>Fecha de Compra:</strong>
   <%= @sale.date_sale %>
 </p>
 
 <p>
-  <strong>Total cost:</strong>
-  Total: <%= @sale.total_cost %>
+  <strong>Costo Total:</strong>
+  <%= @sale.total_cost %>
 </p>
 
-<div>
-	<% @sale.line_items.each do |details| %>
-		<div> id: <%= details.product_id %> </div>
-		<div> Producto: <%= details.product.name %> </div>
-		<div> Cantidad: <%= details.quantity %> </div>
-		<div> subtotal: <%= details.subtotal %> </div>
-	<% end %>
-</div>
+<table>
+	<tr>
+		<th> id </th>
+		<th> producto </th>
+		<th> cantidad </th>
+		<th> subtotal </th>
+	</tr>
 
-<%= link_to 'Edit', edit_sale_path(@sale) %> |
+	<% @sale.line_items.each do |details| %>
+	<tr>
+		<td> <%= details.product_id %> </td>
+		<td> <%= details.product.name %> </td>
+		<td> Cantidad: <%= details.quantity %> </td>
+		<td> subtotal: <%= details.subtotal %> </td>
+	</tr>
+	<% end %>
+</table>
+
+
 <%= link_to 'Back', sales_path %>

@@ -14,8 +14,14 @@
     <div class="products-body">
       <% @products.each do |product|%>
         <div class="product-b">
-          <p> nombre: <%= product.name %></p>
-          <p><%= product.category.name %></p>
+          <p> <%= product.name %> </p>
+          <p> <%= product.category.name %> </p>
+          <div class="button-prod">
+            <%= form_with(url: "/carts", method: "patch") do %>
+              <%= hidden_field_tag(:product_id, product.id)%>
+              <%= submit_tag("agregar producto") %>
+            <% end %>
+          </div>
         </div>
       <% end %>
     </div>

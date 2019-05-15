@@ -64,8 +64,10 @@
 		</div>
 		<% end %>
 		<div>
-			<%= form_with(url: "/sales", method: "post") do %>
-				<%= submit_tag("Comprar") %>
+			<% if @cart.set_totals != 0.0 %>
+				<%= form_with(url: "/sales", method: "post") do %>
+					<%= submit_tag("Comprar") %>
+				<% end %>
 			<% end %>
 		</div>
 	</div>

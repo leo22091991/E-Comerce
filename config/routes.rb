@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-  resources :welcome
-  root 'welcome#cart'
+  root 'products#index'
+  get '/welcome/cart'=>'welcome#cart'
   post '/sales' => 'sales#create'
   patch '/carts' => 'carts#update'
   patch '/line_items/update_add_quantity' => 'line_items#update_add_quantity'
   patch '/line_items/update_rec_quantity' => 'line_items#update_rec_quantity'
   delete '/carts' => 'carts#delete_item'
-
+  
+  resources :welcome
   resources :carts
   resources :line_items
   resources :sales  
