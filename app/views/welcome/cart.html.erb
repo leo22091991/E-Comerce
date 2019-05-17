@@ -63,7 +63,7 @@
 			</div>
 		</div>
 		<% end %>
-		<div>
+		<div class="boton-comprar">
 			<% if @cart.set_totals != 0.0 %>
 				<%= form_with(url: "/sales", method: "post") do %>
 					<%= submit_tag("Comprar") %>

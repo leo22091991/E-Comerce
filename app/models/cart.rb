@@ -10,18 +10,11 @@ class Cart < ApplicationRecord
 	accepts_nested_attributes_for :line_items
 
 
-	
-
-	def set_total
-		self.total = Cart.last.set_totals
-	end
-
-
 	def set_totals
 		details = self.line_items
-		self.total = 0.0
+		total = 0.0
 		details.each do |det|
-			self.total = self.total + det.subtotal
+			total = total + det.subtotal
 		end
 		return total
 	end

@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_17_060742) do
+ActiveRecord::Schema.define(version: 2019_05_17_043243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "carts", force: :cascade do |t|
-    t.float "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -29,7 +28,6 @@ ActiveRecord::Schema.define(version: 2019_04_17_060742) do
 
   create_table "line_items", force: :cascade do |t|
     t.integer "product_id"
-    t.integer "sale_id"
     t.integer "quantity"
     t.float "subtotal"
     t.datetime "created_at", null: false
@@ -37,7 +35,6 @@ ActiveRecord::Schema.define(version: 2019_04_17_060742) do
     t.integer "line_itemable_id"
     t.string "line_itemable_type"
     t.index ["product_id"], name: "index_line_items_on_product_id"
-    t.index ["sale_id"], name: "index_line_items_on_sale_id"
   end
 
   create_table "products", force: :cascade do |t|
