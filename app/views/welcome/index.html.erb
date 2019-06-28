@@ -1,12 +1,3 @@
-<head>
-  <meta charset="UTF-8">
-  <title>Ecomerce</title>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-</head>
-
 <main>
     <div class="products-carousel">
       <div class="js-anterior"> < </div>
@@ -73,7 +64,7 @@
           $(this).removeClass('active')
         }
       })
-      $(productos[Math.abs(siTiene-1)%len]).addClass('active')
+      $(productos[Math.abs(siTiene+len-1)%len]).addClass('active')
     })
   </script>
 
