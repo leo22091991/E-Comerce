@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get '/welcome/cart'=>'welcome#cart'
   post '/sales' => 'sales#create'
   patch '/carts' => 'carts#update'
-  patch '/line_items/update_add_quantity' => 'line_items#update_add_quantity'
+  patch '/line_items/update_quantity' => 'line_items#update_quantity'
   patch '/line_items/update_rec_quantity' => 'line_items#update_rec_quantity'
   delete '/carts' => 'carts#delete_item'
   

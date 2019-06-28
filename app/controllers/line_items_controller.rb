@@ -11,10 +11,10 @@ class LineItemsController < ApplicationController
 		redirect_to '/welcome/cart'
 	end
 
-	def update_rec_quantity
+	def update_quantity
 
 		line_item2 = current_cart.line_items.find_by_id(params[:line_item_id])
-		line_item2.update(quantity: line_item2.quantity - 1)
+		line_item2.update(quantity: line_item2.quantity + params[:quantity].to_i)
 
 		redirect_to '/welcome/cart'
 	end

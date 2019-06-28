@@ -27,6 +27,8 @@ class SalesController < ApplicationController
 
     @sale = Sale.new(total_cost: total_sale)
 
+    # @sale.copy_from_cart(@current_cart)
+
     current_cart.line_items.each do |li|
       product_id = li.product_id
       quantity = li.quantity
@@ -104,3 +106,4 @@ class SalesController < ApplicationController
       return total
     end
 end
+
