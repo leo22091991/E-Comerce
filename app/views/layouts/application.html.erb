@@ -11,29 +11,19 @@
 
 <body>
 
-  <header>
 
-    <div class="menu">
-      x
-      <ul class="link">
-        <li>
-          <a href="" id="">link</a>
-        </li>
-        <li>
-          <a href="" id="">link</a>
-        </li>
-        <li>
-          <a href="" id="">link</a>
-        </li>
-      </ul>
-    </div>
+  <main class=>
+    
+    <%= render "partials/navigation" %>
 
+    <%= flash[:notice] %>
 
-    <div class="logo">
-      Logo
-    </div>
-  </header>
-<%= yield %>
+    <%= yield %>
+
+  </main>
+  
+  <%= render "partials/footer" %>
+
 </body>
 </html>
 

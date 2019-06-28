@@ -24,15 +24,35 @@ class SalesController < ApplicationController
   # POST /sales
   # POST /sales.json
   def create
-    @sale = Sale.new(sale_params)
+
+    @sale = Sale.new(total_cost: total_sale)
+
+    # @sale.copy_from_cart(@current_cart)
+
+    current_cart.line_items.each do |li|
+      product_id = li.product_id
+      quantity = li.quantity
+      subtotal = li.subtotal
+
+      @sale.line_items.new(
+        product_id: product_id, 
+        quantity: quantity, 
+        subtotal: subtotal
+        )
+
+    end
+
 
     respond_to do |format|
       if @sale.save
         format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
         format.json { render :show, status: :created, location: @sale }
+
+        current_cart.line_items.delete_all
+
       else
         format.html { render :new }
-        format.json { render json: @sale.errors, status: :unprocessable_entity }
+        format.json { render json: @sales.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -40,6 +60,7 @@ class SalesController < ApplicationController
   # PATCH/PUT /sales/1
   # PATCH/PUT /sales/1.json
   def update
+
     respond_to do |format|
       if @sale.update(sale_params)
         format.html { redirect_to @sale, notice: 'Sale was successfully updated.' }
@@ -69,6 +90,20 @@ class SalesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_params
-      params.require(:sale).permit(:date_sale, details_sales_attributes: [:product_id, :quantity])
+      params.require(:sale).permit(:date_sale, line_items_attributes: [:product_id, :quantity])
+    end
+
+    def current_cart
+      @cart = Cart.first
+    end
+
+    def total_sale
+      details = current_cart.line_items
+      total = 0.0
+      details.each do |detalle|
+        total = total + detalle.subtotal
+      end
+      return total
     end
 end
+

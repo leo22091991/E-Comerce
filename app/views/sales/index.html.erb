@@ -5,20 +5,20 @@
 <table>
   <thead>
     <tr>
-      <th>Date sale</th>
-      <th>Total cost</th>
-      <th colspan="3"></th>
+      <th>Id</th>
+      <th>Fecha de venta</th>
+      <th>Costo Total</th>
+      <th> </th>
     </tr>
   </thead>
 
   <tbody>
     <% @sales.each do |sale| %>
       <tr>
+        <td> <%= sale.id %> </td>
         <td><%= sale.date_sale %></td>
         <td><%= sale.total_cost %></td>
         <td><%= link_to 'Show', sale %></td>
-        <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
-        <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

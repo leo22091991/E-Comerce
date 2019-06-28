@@ -1,0 +1,76 @@
+<main class="cart-main">
+	<div class="cart-index">
+		<% @products.each do |product| %>
+			<div class="cart-index-product">
+				<div class="title-product">
+					<%= link_to product.name, product %>
+				</div>
+				<div class="body-prod">
+					<div class="body-prod-image">
+						FOTO
+					</div>
+					<div class="body-prod-desc">
+						<%= product.description %>
+					</div>
+				</div>
+				<div class="price-and-button">
+					<div class="price">
+						$ <%= product.price %>
+					</div>
+					<div class="button">
+						<%= form_with(url: "/carts", method: "patch") do %>
+							<%= hidden_field_tag(:product_id, product.id)%>
+							<%= submit_tag("agregar producto") %>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+	<div class="cart-cart">
+		<div class="total-carrito">
+			<div class="total-carrito-title">  Total </div>
+			<div class="total-carrito-price"> <%= @cart.set_totals%> </div>
+		</div>
+		<% @cart.line_items.order(:created_at).each do |line_item| %>
+		<div class="cart-cart-product">
+			<div class="boton-eliminar">
+				<%= form_with(url: "/carts", method: "delete") do %>
+					<%= hidden_field_tag(:line_item_id, line_item.id)%>
+					<%= submit_tag("X") %>
+				<% end %>
+			</div>
+			<div class="cart-price">
+				<%= line_item.product.price%>
+			</div>
+			<div class="cart-name">
+				<%= line_item.product.name %>
+			</div>
+			<div class="cart-add">
+				<%= form_with(url: "/line_items/update_quantity", method: "patch") do %>
+					<%= hidden_field_tag(:line_item_id, line_item.id) %>
+					<%= hidden_field_tag(:quantity, 1) %>
+					<%=  submit_tag("+") %>
+				<% end %>
+			</div>
+			<div class="cart-quantity">
+				<%= line_item.quantity %>
+			</div>
+			<div class="cart-subtract">
+				<%= form_with(url: "/line_items/update_quantity", method: "patch") do %>
+					<%= hidden_field_tag(:line_item_id, line_item.id) %>
+					<%= hidden_field_tag(:quantity, -1) %>
+					<%= submit_tag("-") %>
+				<% end %>
+			</div>
+		</div>
+		<% end %>
+		<div class="boton-comprar">
+			<% if @cart.set_totals != 0.0 %>
+				<%= form_with(url: "/sales", method: "post") do %>
+					<%= submit_tag("Comprar") %>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+</main>

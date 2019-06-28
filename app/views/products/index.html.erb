@@ -1,33 +1,63 @@
-<p id="notice"><%= notice %></p>
+<main>
+    <div class="products-carousel">
+      <div class="js-anterior"> < </div>
+        <% @products.each do |prod| %>
+          <div class="product">
+            <p> <%= prod.name%> </p>
+            <p> <%= prod.category.name%> </p>
+          </div>
+        <% end %>
+      <div class="js-siguiente"> > </div>
+    </div>
 
-<h1>Products</h1>
+    
+    <div class="products-body">
+      <% @products.each do |product|%>
+        <div class="product-b">
+          <p> <%= product.name %> </p>
+          <p> <%= product.category.name %> </p>
+          <div class="button-prod">
+            <%= form_with(url: "/carts", method: "patch") do %>
+              <%= hidden_field_tag(:product_id, product.id)%>
+              <%= submit_tag("agregar producto") %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+</main>
 
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.category %></td>
-        <td><%= product.name %></td>
-        <td><%= product.price %></td>
-        <td><%= product.description %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <script>
+    $('.js-siguiente').on('click', function() {
+      var productos = $('.product')
+      var len = productos.length
+      var siTiene = 0
+      productos.each( function(index){
+        console.log(index) 
+        if ($(this).hasClass('active')) {
+          siTiene = index
+          $(this).removeClass('active')
+        }
+      })
+      $(productos[(siTiene+1)%len]).addClass('active')
+    })
+  </script>
 
-<br>
+  <script>
+    $('.js-anterior').on('click', function() {
+      var productos = $('.product')
+      var len = productos.length
+      var siTiene = 0
+      productos.each( function(index){
+        console.log(index) 
+        if ($(this).hasClass('active')) {
+          siTiene = index
+          $(this).removeClass('active')
+        }
+      })
+      $(productos[(siTiene+1)%len]).addClass('active')
+    })
+  </script>
 
-<%= link_to 'New Product', new_product_path %>
+</body>
